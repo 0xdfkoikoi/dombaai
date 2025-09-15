@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - DeWisdom CAFE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <!-- Font Awesome for cart icon and trash icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* === GENERAL STYLES === */
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-color: #333;
+            background-image: url('https://raw.githubusercontent.com/0xdfkoikoi/Menuwhatsapptest/main/bg.webp');
+            background-size: auto;
+            background-position: center;
+            color: #fff;
+            overflow-x: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .menu-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .glassmorphism-header-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            padding: 20px 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .menu-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-button {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1em;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .header-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* === FIRST CAROUSEL === */
+        .slider-container {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 500px;
+            justify-content: center;
+        }
+
+        .slides-wrapper {
+            display: flex;
+            width: 100%;
+            transition: transform 0.6s ease-in-out;
+            height: 100%;
+        }
+
+        .menu-slide {
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            text-align: center;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .slide-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 70%;
+        }
+
+        .menu-slide img {
+            max-width: 100%;
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: block;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-slide img:active {
+            transform: scale(0.98);
+        }
+
+        .slide-content {
+            flex: 1;
+            max-width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .menu-slide-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: white;
+            margin-top: 0;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .menu-slide-description {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .menu-slide-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #a7f3d0;
+            margin-top: auto;
+        }
+
+        .slider-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            z-index: 2;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .slider-nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        #prevBtn {
+            left: 15px;
+        }
+
+        #nextBtn {
+            right: 15px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+        }
+
+        /* === IMAGE MODAL === */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        .image-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            position: relative;
+            width: auto;
+            height: auto;
+            max-width: 90vw;
+            max-height: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            display: block;
+            border-radius: 10px;
+            object-fit: contain;
+            width: auto;
+            height: auto;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+            z-index: 101;
+        }
+        
+        .modal-close-button:hover {
+            background-color: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal-close-button:active {
+            transform: scale(0.95);
+        }
+        
+        /* === UPDATED STYLES FOR DRINK CAROUSEL & NEW CART SECTION === */
+        .new-carousel-card, .cart-section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 20px;
+            position: relative;
+        }
+
+        .carousel-title, .cart-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+        
+        /* NEW STYLES FOR CUSTOMER NAME FORM */
+        .customer-form {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .customer-form label {
+            font-size: 1em;
+            font-weight: 600;
+            color: #a7f3d0;
+        }
+        
+        .customer-form input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .customer-form input:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #a7f3d0;
+        }
+        
+        .customer-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* NEW STYLES FOR CATEGORY SELECTION */
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .category-button {
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+            white-space: nowrap;
+        }
+
+        .category-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .category-button.active {
+            background-color: #a7f3d0;
+            color: #1f2937;
+            border-color: #a7f3d0;
+            box-shadow: 0 4px 15px rgba(167, 243, 208, 0.3);
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
+            width: fit-content;
+        }
+
+        .carousel-container {
+            width: 100%;
+            max-width: 500px;
+            overflow-x: hidden;
+            padding: 20px 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: grab;
+            position: relative;
+        }
+        
+        .carousel-item {
+            flex-shrink: 0;
+            width: 150px;
+            padding: 0 5px;
+            margin: 0 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.5;
+            transition: opacity 0.3s ease, filter 0.3s ease;
+            filter: blur(2px);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .carousel-item.active {
+            opacity: 1;
+            filter: blur(0);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            width: 85%;
+            max-width: 400px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .info h2 {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .info p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .info .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+            color: #a7f3d0;
+        }
+        
+        .add-to-cart-button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #6ee7b7; /* teal-300 */
+            color: #1f2937; /* gray-800 */
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .add-to-cart-button:hover {
+            background-color: #34d399; /* teal-400 */
+        }
+        
+        /* On-page Cart Section */
+        .cart-section {
+            padding: 30px;
+            gap: 20px;
+        }
+
+        .cart-items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-item-info span {
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .cart-item-info small {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-button, .remove-item-button {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        
+        .quantity-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .remove-item-button {
+            background-color: #ef4444; /* red-500 */
+            border-color: #ef4444;
+        }
+        
+        .remove-item-button:hover {
+            background-color: #dc2626; /* red-600 */
+        }
+        
+        .cart-total {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 10px;
+            text-align: right;
+            width: 100%;
+        }
+
+        .checkout-button {
+            padding: 12px 24px;
+            background-color: #34d399; /* teal-400 */
+            color: #1f2937; /* gray-800 */
+            font-weight: 700;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .checkout-button:hover {
+            background-color: #10b981; /* emerald-500 */
+        }
+        
+        .checkout-button:disabled {
+            background-color: #5c626d;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .empty-cart-message {
+            text-align: center;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Custom Modal for alerts */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .custom-modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            max-width: 400px;
+            width: 80%;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .custom-modal-content h3 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .custom-modal-content p {
+            margin: 0;
+        }
+        
+        .custom-modal-close {
+            background-color: #34d399;
+            color: #1f2937;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .custom-modal-close:hover {
+            background-color: #10b981;
+        }
+
+        /* === RESPONSIVE ADJUSTMENTS === */
+        @media (max-width: 768px) {
+            .menu-title {
+                font-size: 2em;
+            }
+            .slider-container {
+                min-height: 400px;
+                padding: 15px;
+            }
+            .menu-slide {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .slide-image-wrapper {
+                max-width: 80%;
+            }
+            .menu-slide img {
+                max-height: 250px;
+            }
+            .slide-content {
+                max-width: 95%;
+                align-items: center;
+                text-align: center;
+            }
+            .menu-slide-title {
+                font-size: 1.8em;
+            }
+            .menu-slide-description {
+                font-size: 0.9em;
+            }
+            .menu-slide-price {
+                font-size: 1.5em;
+            }
+            .slider-nav-button {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2em;
+            }
+            #prevBtn {
+                left: 10px;
+            }
+            #nextBtn {
+                right: 10px;
+            }
+            .slider-dots {
+                bottom: 15px;
+            }
+            .modal-content {
+                padding: 15px;
+            }
+            .modal-close-button {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.5em;
+            }
+            /* New carousel responsive adjustments */
+            .carousel-item {
+                width: 150px; /* Increased width for smaller tablets */
+                margin: 0 10px;
+            }
+            .info h2 {
+                font-size: 1.2rem;
+            }
+            .info p {
+                font-size: 0.9rem;
+            }
+            .header-buttons {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .menu-container {
+                padding: 10px;
+                gap: 20px;
+            }
+            .glassmorphism-header-card {
+                padding: 15px;
+            }
+            .menu-title {
+                font-size: 1.5em;
+            }
+            .header-button {
+                padding: 8px 18px;
+                font-size: 0.85em;
+            }
+            .slider-container {
+                min-height: 350px;
+                padding: 10px;
+            }
+            .menu-slide img {
+                max-height: 200px;
+            }
+            .menu-slide-title {
+                font-size: 1.5em;
+            }
+            .menu-slide-price {
+                font-size: 1.3em;
+            }
+            .carousel-item {
+                width: 140px; /* Increased width for mobile phones */
+                margin: 0 10px;
+            }
+            .info h2 {
+                font-size: 1.1rem;
+            }
+            .info p {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <header class="glassmorphism-header-card">
+            <h1 class="menu-title">Menu cafe wisdom</h1>
+            <div class="header-buttons">
+                <a href="index.html" class="header-button">← Back to Home</a>
+            </div>
+        </header>
+        <main class="slider-container">
+            <div class="slides-wrapper" id="slidesWrapper">
+                <div class="menu-slide">
+                    <div class="slide-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/main/img/JADI1.jpg" alt="Specialty Coffee" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1f2937/a7f3d0?text=Image+Unavailable';">
+                    </div>
+                    <div class="slide-content">
+                        <h3 class="menu-slide-title">Aneka kopi dan Milkbase</h3>
+                        <p class="menu-slide-description">Minuman yang kaya dan aromatik dibuat dari biji kopi premium dari espresso yang kuat hingga americano yang lembut, sempurna untuk pecinta kopi sejati.</p>
+                        <span class="menu-slide-price">click untuk zoom menu</span>
+                    </div>
+                </div>
+                <div class="menu-slide">
+                    <div class="slide-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/main/img/JADI2.jpg" alt="Fluffy Croissant" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1f2937/a7f3d0?text=Image+Unavailable';">
+                    </div>
+                    <div class="slide-content">
+                        <h3 class="menu-slide-title">Mocktail dan Tea</h3>
+                        <p class="menu-slide-description">Campuran buah dan rempah yang segar dan semarak minuman bebas alkohol yang berkilau dan menyehatkan.</p>
+                        <span class="menu-slide-price">click untuk zoom menu</span>
+                    </div>
+                </div>
+                <div class="menu-slide">
+                    <div class="slide-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/main/img/JADI3.jpg" alt="Avocado Toast" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1f2937/a7f3d0?text=Image+Unavailable';">
+                    </div>
+                    <div class="slide-content">
+                        <h3 class="menu-slide-title">Light meal & noodle</h3>
+                        <p class="menu-slide-description">Hidangan ringan yang menggugah selera — mulai dari camilan renyah hingga sajian hangat yang nyaman, pas untuk teman ngopi atau momen santai bersama.</p>
+                        <span class="menu-slide-price">click untuk zoom menu</span>
+                    </div>
+                </div>
+                <div class="menu-slide">
+                    <div class="slide-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/main/img/JADI4.jpg" alt="Velvet Cheesecake" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1f2937/a7f3d0?text=Image+Unavailable';">
+                    </div>
+                    <div class="slide-content">
+                        <h3 class="menu-slide-title">Heavy meal</h3>
+                        <p class="menu-slide-description">Hidangan utama yang lezat dan mengenyangkan — cocok untuk mengisi energi dan menemani waktu santai dengan cita rasa istimewa.</p>
+                        <span class="menu-slide-price">click untuk zoom menu</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav-button" id="prevBtn">❮</div>
+            <div class="slider-nav-button" id="nextBtn">❯</div>
+            <div class="slider-dots" id="sliderDots"> </div>
+        </main>
+        
+        <!-- === UPDATED SECTION: Drink Carousel with Categories === -->
+        <section class="new-carousel-card">
+            <h2 class="carousel-title">Our Signature Menu</h2>
+            <div class="category-buttons" id="categoryButtons">
+                <button class="category-button active" data-category="coffee">Coffee & Milkbase</button>
+                <button class="category-button" data-category="mocktail">Mocktail & Tea</button>
+                <button class="category-button" data-category="lightmeal">Light Meal</button>
+                <button class="category-button" data-category="heavymeal">Heavy Meal</button>
+            </div>
+            <div class="carousel-container" id="drinkCarouselContainer">
+                <div class="carousel-wrapper" id="newCarouselWrapper">
+                    <!-- Carousel items will be dynamically inserted here by JavaScript -->
+                </div>
+            </div>
+            <div class="info" id="newCarouselInfo">
+                <!-- Info will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- On-page Cart Section -->
+        <section class="cart-section">
+            <h2 class="cart-title">Your Order <i class="fas fa-shopping-cart"></i></h2>
+            <!-- New customer name form -->
+            <form class="customer-form" onsubmit="event.preventDefault();">
+                <label for="customerName">Your Name:</label>
+                <input type="text" id="customerName" placeholder="Enter your name" required>
+            </form>
+            
+            <ul class="cart-items-list" id="cartItemsList">
+                <!-- Cart items will be dynamically inserted here -->
+            </ul>
+            <p class="empty-cart-message" id="emptyCartMessage">Your cart is empty.</p>
+            <div class="cart-total" id="cartTotal">Total: Rp 0</div>
+            <button class="checkout-button" id="checkoutButton" disabled>Checkout on WhatsApp</button>
+        </section>
+    </div>
+    
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <span class="modal-close-button" id="modalCloseButton">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Zoomed Menu Item">
+        </div>
+    </div>
+    
+    <!-- Custom Modal for Alerts -->
+    <div id="customAlertModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <h3 id="customAlertTitle"></h3>
+            <p id="customAlertMessage"></p>
+            <button id="customAlertCloseButton" class="custom-modal-close">OK</button>
+        </div>
+    </div>
+
+
+    <script>
+        // === ORIGINAL CAROUSEL LOGIC ===
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.menu-slide');
+        const slidesWrapper = document.getElementById('slidesWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const sliderDots = document.getElementById('sliderDots');
+
+        // Create dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (i === currentIndex) {
+                dot.classList.add('active');
+            }
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+            });
+            sliderDots.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlider() {
+            slidesWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+
+        // Image Modal Logic
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCloseButton = document.getElementById('modalCloseButton');
+
+        slides.forEach(slide => {
+            const image = slide.querySelector('img');
+            image.addEventListener('click', () => {
+                modalImage.src = image.src;
+                imageModal.classList.add('active');
+            });
+        });
+
+        modalCloseButton.addEventListener('click', () => {
+            imageModal.classList.remove('active');
+        });
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') {
+                imageModal.classList.remove('active');
+            }
+        });
+
+        // === UPDATED CAROUSEL & CART LOGIC WITH CATEGORIES ===
+        const categoryButtons = document.getElementById('categoryButtons');
+        const newCarouselWrapper = document.getElementById('newCarouselWrapper');
+        const newCarouselInfo = document.getElementById('newCarouselInfo');
+        const cartItemsList = document.getElementById('cartItemsList');
+        const cartTotalDisplay = document.getElementById('cartTotal');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const checkoutButton = document.getElementById('checkoutButton');
+        const customerNameInput = document.getElementById('customerName');
+        const itemWidth = 170; // Width of a carousel-item + its margins
+
+        let newCurrentIndex = 1; 
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+
+        // Mock data for each category. Replace with your actual menu items.
+        const coffeeItems = [
+            { name: 'Afogato', description: 'Kopi kualitas tinggi dan ice cream gato.', price: 22000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m1.png' },
+            { name: 'Americano Coffee', description: 'Americano menghasilkan rasa kopi yang ringan namun tetap kuat.', price: 22000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m2.png' },
+            { name: 'Es Kopi Susu', description: 'Campuran espresso dan susu dengan rasa manis dan creamy yang menyegarkan.', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m3.png' },
+            { name: 'Es Kopi Susu Gula aren', description: 'Es Kopi Susu Gula Aren adalah perpaduan espresso, susu dan gula aren disajikan dengan es batu. Rasanya manis creamy dengan khas aroma gula aren.', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m4.png' },
+            { name: 'Cappuccino', description: 'Cappuccino adalah minuman kopi berbasis espresso dengan susu menghasilkan rasa creamy dan seimbang antara kopi dan susu.', price: 23000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m5.png' },
+            { name: 'Kopi Tubruk', description: 'Kopi khas Indonesia yang dibuat dengan menyeduh langsung bubuk kopi kasar dengan air panas, mengahasilkan rasa kuat dan aroma khas.', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m6.png'},
+            { name: 'V60', description: 'Kopi V60 adalah metode seduh manual dengan alat berbentuk kerucut menghasilkan kopi yang jernih, ringan dan kaya rasa', price: 22000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m7.png'},
+            { name: 'Japanese', description: 'Kopi japanese adalah metode seduh pour over langsung di atas es batu, menghasilkan kopi dingin yang segar dengan rasa cerah dan aroma yang tetap terjaga,', price: 23000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m8.png'},
+            { name: 'Kopi Lemon', description: 'Kopi lemon adalah minuman segar yang menggabungkan espresso dan perasan lemon, menghasilkan rasa asam manis yang unik dan menyegarkan.', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m9.png' },
+            { name: 'Strawberry Milk', description: 'racikan susu dan liquid strawbbery dengan menggunakan komposisi yang pas menghasilkan cipta rasa yang enak dan gurih', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m10.png' },
+            { name: 'Blueberry korean Milk', description: 'perpaduan susu lembut dengan rasa blueberry tropis yang manis dan segar menciptakan rasa yang creamy dan enak', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m11.png' },
+            { name: 'Float Coklat', description: 'Minuman coklat manis dengan topping es krim lembut vanilla segar', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m12.png' },
+            { name: 'Float Taro', description: 'minuman cantik berwarna ungu dengan tambahan es krim vanilla segar', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m13.png' },
+            { name: 'Float GreenTea', description: 'minuman green tea yang enak ditambah es krim vanilla lembut', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m14.png' },
+            { name: 'Float RedVelvet', description: 'minuman rasa unik redvelvet ditambah es krim vanilla lembut', price: 25000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/m15.png' },
+        ];
+
+        const mocktailItems = [
+            { name: 'Bluesky', description: 'Minuman segar berwarna biru alami dari bunga telang yang kaya antioksidan. Dipadukan dengan rasa lembut dan aroma menenangkan, cocok dinikmati dingin untuk menyegarkan hari dan memberikan sentuhan relaksasi alami.', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock1.png' },
+            { name: 'Sparkling coffee', description: 'erpaduan unik kopi premium dengan sentuhan soda berkarbonasi yang menghadirkan sensasi segar, ringan, dan menyegarkan di setiap tegukan. Cocok untuk pecinta kopi yang ingin mencoba rasa berbeda dan membangkitkan semangat.', price: 22000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock2.png' },
+            { name: 'Mojito strawberry', description: 'Minuman segar perpaduan stroberi manis, daun mint aromatik, perasan jeruk nipis, dan soda yang berpadu menciptakan rasa manis-asam yang menyegarkan. Pilihan sempurna untuk melepas dahaga dengan sensasi tropis yang memikat..', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock3.png' },
+            { name: 'Mojito leci', description: 'Perpaduan manis lembut buah leci, segarnya daun mint, dan perasan jeruk nipis yang dipadukan dengan soda berkilau. Memberikan sensasi tropis yang ringan, segar, dan memanjakan di setiap tegukan.', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock4.png' },
+            { name: 'Mojito lemon', description: 'Minuman segar dengan kombinasi lemon asam menyegarkan, daun mint aromatik, dan soda berkilau. Memberikan rasa cerah dan penuh energi yang pas untuk menghilangkan dahaga di hari panas.', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock5.png' },
+            { name: 'Lemon squash', description: 'Minuman klasik dengan kesegaran lemon asli yang dipadukan soda berkilau, menghasilkan rasa asam-manis yang menyegarkan dan membangkitkan semangat. Cocok dinikmati kapan saja untuk sensasi fresh yang maksimal.', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock6.png' },
+            { name: 'Juice mangga', description: 'Minuman murni dari sari buah mangga segar dengan rasa manis alami dan tekstur lembut. Menyegarkan sekaligus memanjakan lidah, seperti menikmati mangga langsung dari pohonnya.', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock7.png' },
+            { name: 'Juice strawberry', description: 'Sari buah stroberi segar dengan rasa manis-asam alami yang memikat. Menyegarkan, penuh vitamin, dan cocok untuk menemani momen santai kapan saja.', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock8.png' },
+            { name: 'Juice alpukat', description: 'Sari buah mangga segar dengan rasa manis alami dan aroma tropis yang menggoda. Menyegarkan dan kaya vitamin, sempurna untuk dinikmati di segala suasana.', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock9.png' },
+            { name: 'Lemon Tea', description: 'Kesegaran teh berpadu dengan sentuhan lemon, memberi rasa ringan dan menyegarkan.', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock10.png' },
+            { name: 'Telang Tea', description: 'teh berwarna biru yang menyegarkan dan menyehatkan bisa di seduh panas atau dingin', price: 13000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock11.png' },
+            { name: 'Lychee Tea', description: 'perpaduan unik teh dan buah lychee manis alami dengan aroma khas yang menyegarkan', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock13.png' },
+            { name: 'Sweet Tea', description: 'teh manis panas ataupun dingin dengan rasa alami dari alam beraroma daun melati', price: 13000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock12.png' },
+            { name: 'Air Mineral', description: 'air mineral menyehatkan', price: 5000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/mock14.png' },
+        ];
+
+        const lightMealItems = [
+            { name: 'Onion ring', description: 'Cincin bawang bombay pilihan yang dibalut adonan krispi, lalu digoreng sempurna. Rasanya renyah di luar, Cocok dinikmati dengan saus favoritmu.', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal1.png' },
+            { name: 'French fries', description: 'Irisan kentang premium yang digoreng dengan metode khusus hingga menghasilkan tekstur krispi di luar dan lembut di dalam. Gurih dan pas untuk dinikmati kapan saja.', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal2.png' },
+            { name: 'French fries sausage', description: ' Irisan kentang premium yang digoreng dengan metode khusus hingga menghasilkan tekstur krispi di luar dan lembut di dalam. Gurih dan pas untuk dinikmati kapan saja.', price: 22000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal3.png' },
+            { name: 'Sosis goreng/bakar', description: 'di goreng atau di bakar keaduanya selalu nikmat menemani light meal anda', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal4.png' },
+            { name: 'Tahu lada garam', description: 'tahu lembut yang di goreng hingga luarnya kering dan renyah lalu di bumbui pedas gurih khas lada garam wisdom', price: 20000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal5.png' },
+            { name: 'roti bakar', description: 'Roti tawar tebal yang dipanggang hingga kecolatan dengan toping di dalamnya, cocok dinikmati teh hangat dan kopi.', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal6.png' },
+            { name: 'Cheese roll', description: ' Hidangan ringan yang memanjakan lidah! Lembaran kulit lumpia renyah membungkus potongan keju yang creamy, lalu digoreng hingga keemasan. Sensasi lumer di setiap gigitan', price: 18000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/springroll.png' },
+            { name: 'Banana spring roll', description: 'sajian camilan penggugah selera, potongan pisang pilihan yang di bungkus dalam kulit lumpia tipis digoreng hingga garing menghadirkan rasa manis lumer didalam dan diluar', price: 2000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/springroll.png' },
+            { name: 'pop mie', description: 'makanan ringan yang enak di nikmati di kala hujan di DeWisdom Cafe', price: 10000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmealpop.png' },
+            { name: 'indomie kuah', description: 'makanan ringan yang enak di nikmati di DeWisdom cafe di tambah telur dan sosis', price: 15000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal7.png' },
+            { name: 'indomie goreng', description: 'makanan ringan yang enak di nikmati di DeWisdom cafe di tambah extra telur dan sosis', price: 15000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal8.png' },
+            { name: 'spageti wisdom', description: 'spageti dengan topping sausage dan bumbu spageti khas wisdom', price: 15000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/lightmeal9.png' },
+
+
+        ];
+
+        const heavyMealItems = [
+            { name: 'Nasi Goreng Wisdom', description: 'Hidangan nasi goreng istimewa yang di masak dengan bumbu khas DeWisdom cafe menggunakan rempah alami menciptakan rasa yang seimbang di setiap suapnya.', price: 23000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/heavymeal1.png' },
+            { name: 'Nasi Goreng Sate Kambing', description: 'Daging Domba pilihan dipotong secara hati-hati agar tidak menciptakan bau amis di sajikan di atas nasi goreng khas Wisdom cafe.', price: 40000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/heavymeal2.png' },
+            { name: 'Nasi Sate Kambing', description: 'masih menggunakan sate pilihan di tambah sambal kecap dan irisan cabai alami dengan di tambahkan bumbu penyedap rasa rahasia.', price: 40000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/heavymeal3.png' },
+            { name: 'Ayam Geprek', description: 'ayam goreng dengan sambal pedas gurih disajikan dengan nasi hangat', price: 35000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/heavymeal4.png' },
+            { name: 'Ayam Penyet', description: 'ayam goreng yang di goreng hingga matang di atas cobek berisi sambal terasi yang enak', price: 35000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/heavymeal5.png'},
+            { name: 'Steak ayam', description: 'ayam yang telah di marinasi lalu di panggang hingga empuk disajikan dengan saus lada hitam yang kaya rasa', price: 35000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/heavymeal6.png'},
+            { name: 'Kimbap', description: 'hidangan autentic korea yang terdiri dari nasi pulen, aneka sayuran dan asinan daging gulung di dalamnya', price: 35000, image: 'https://raw.githubusercontent.com/0xdfkoikoi/wisdomcafe/refs/heads/main/img/heavymeal7.png'}
+        ];
+        
+        let currentItems = coffeeItems; // Default to coffee category
+
+        // Function to render carousel items based on the selected category
+        function renderCarouselItems(items) {
+            newCarouselWrapper.innerHTML = '';
+            if (items.length === 0) {
+                 newCarouselWrapper.innerHTML = `<div style="padding: 20px; text-align: center;">No items available in this category.</div>`;
+            }
+            items.forEach((item, index) => {
+                const carouselItem = document.createElement('div');
+                carouselItem.classList.add('carousel-item');
+                carouselItem.dataset.index = index;
+
+                carouselItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/150x150/1f2937/a7f3d0?text=${encodeURIComponent(item.name)}';">
+                `;
+
+                newCarouselWrapper.appendChild(carouselItem);
+            });
+            // A check is added in `window.onload` to ensure the initial value is valid.
+        }
+
+        // Add event listeners to category buttons
+        categoryButtons.addEventListener('click', (e) => {
+            const target = e.target.closest('.category-button');
+            if (target) {
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
+                // Add active class to the clicked button
+                target.classList.add('active');
+
+                // Get the category from the data attribute
+                const category = target.dataset.category;
+
+                // Update the currentItems array and re-render the carousel
+                switch (category) {
+                    case 'coffee':
+                        currentItems = coffeeItems;
+                        break;
+                    case 'mocktail':
+                        currentItems = mocktailItems;
+                        break;
+                    case 'lightmeal':
+                        currentItems = lightMealItems;
+                        break;
+                    case 'heavymeal':
+                        currentItems = heavyMealItems;
+                        break;
+                }
+                newCurrentIndex = 0; // Reset index to 0 when a new category is selected
+                renderCarouselItems(currentItems);
+                updateNewCarouselInfo(newCurrentIndex);
+                centerNewCarousel();
+            }
+        });
+        
+        function updateNewCarouselInfo(index) {
+            if (currentItems.length > 0 && index >= 0 && index < currentItems.length) {
+                const item = currentItems[index];
+                newCarouselInfo.innerHTML = `
+                <div class="price">Rp ${item.price.toLocaleString('id-ID')}</div>
+                    <h2>${item.name}</h2>
+                    <p>${item.description}</p>
+                    <button class="add-to-cart-button" onclick="addToCart(${index})">
+                        Add to Cart
+                    </button>
+                `;
+            } else {
+                newCarouselInfo.innerHTML = '<h2>No items in this category.</h2>';
+            }
+        }
+
+        function centerNewCarousel() {
+            if (currentItems.length === 0) return;
+            const carouselContainer = document.getElementById('drinkCarouselContainer');
+            const newItems = document.querySelectorAll('.carousel-item');
+            const totalWidth = itemWidth * newItems.length;
+
+            const centerIndex = Math.floor(newItems.length / 2);
+            let targetIndex = newCurrentIndex;
+            let offset = newCarouselContainer.clientWidth / 2 - itemWidth / 2;
+
+            if (newItems.length > 0) {
+                let centerPoint = newItems[targetIndex].offsetLeft + newItems[targetIndex].offsetWidth / 2;
+                currentTranslate = newCarouselContainer.clientWidth / 2 - centerPoint;
+            } else {
+                currentTranslate = 0;
+            }
+
+            newCarouselWrapper.style.transform = `translateX(${currentTranslate}px)`;
+            
+            // Update active state
+            newItems.forEach((item, index) => {
+                item.classList.toggle('active', index === newCurrentIndex);
+            });
+            prevTranslate = currentTranslate;
+        }
+
+
+        function startDrag(event) {
+            if (currentItems.length === 0) return;
+            isDragging = true;
+            newCarouselWrapper.style.transition = 'none';
+            if (event.type.includes('mouse')) {
+                startPos = event.clientX;
+            } else if (event.type.includes('touch')) {
+                startPos = event.touches[0].clientX;
+            }
+        }
+
+        function drag(event) {
+            if (!isDragging) return;
+            event.preventDefault(); 
+            
+            let currentPos;
+            if (event.type.includes('mouse')) {
+                currentPos = event.clientX;
+            } else if (event.type.includes('touch')) {
+                currentPos = event.touches[0].clientX;
+            }
+            
+            const dragDistance = currentPos - startPos;
+            currentTranslate = prevTranslate + dragDistance;
+            
+            newCarouselWrapper.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const movedBy = currentTranslate - prevTranslate;
+
+            if (movedBy < -50 && newCurrentIndex < currentItems.length - 1) {
+                newCurrentIndex++;
+            } else if (movedBy > 50 && newCurrentIndex > 0) {
+                newCurrentIndex--;
+            }
+
+            newCarouselWrapper.style.transition = 'transform 0.3s ease-in-out';
+            centerNewCarousel();
+            updateNewCarouselInfo(newCurrentIndex);
+        }
+
+        // Cart logic
+        let cart = [];
+
+        function addToCart(index) {
+            const item = currentItems[index];
+            const existingItem = cart.find(cartItem => cartItem.name === item.name);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            saveCartToStorage();
+            renderCart();
+        }
+
+        function renderCart() {
+            cartItemsList.innerHTML = '';
+            let total = 0;
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                // Initially hide the checkout button if the cart is empty
+                checkoutButton.style.display = 'none';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                checkoutButton.style.display = 'block';
+                cart.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('cart-item');
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    listItem.innerHTML = `
+                        <div class="cart-item-info">
+                            <span>${item.name}</span>
+                            <small>Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity}</small>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button class="quantity-button" onclick="changeQuantity('${item.name}', -1)">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-button" onclick="changeQuantity('${item.name}', 1)">+</button>
+                            <button class="remove-item-button" onclick="removeItem('${item.name}')">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    `;
+                    cartItemsList.appendChild(listItem);
+                });
+            }
+            cartTotalDisplay.textContent = `Total: Rp ${total.toLocaleString('id-ID')}`;
+            updateCheckoutButtonState();
+        }
+
+        function changeQuantity(itemName, delta) {
+            const item = cart.find(cartItem => cartItem.name === itemName);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeItem(itemName);
+                } else {
+                    saveCartToStorage();
+                    renderCart();
+                }
+            }
+        }
+
+        function removeItem(itemName) {
+            cart = cart.filter(item => item.name !== itemName);
+            saveCartToStorage();
+            renderCart();
+        }
+
+        function saveCartToStorage() {
+            localStorage.setItem('wisdomCafeCart', JSON.stringify(cart));
+        }
+
+        function loadCartFromStorage() {
+            const storedCart = localStorage.getItem('wisdomCafeCart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+                renderCart();
+            }
+        }
+        
+        function updateCheckoutButtonState() {
+            const isNameEntered = customerNameInput.value.trim().length > 0;
+            const isCartNotEmpty = cart.length > 0;
+            checkoutButton.disabled = !(isNameEntered && isCartNotEmpty);
+        }
+        
+        // This is the WhatsApp number. Please change it to your real number.
+        const waNumber = '+6289516109943'; 
+
+        function generateWhatsAppMessage() {
+            const customerName = customerNameInput.value.trim();
+            let message = `Halo, saya ${customerName}, ingin memesan:\n\n`;
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${item.quantity}x ${item.name} - Rp ${itemTotal.toLocaleString('id-ID')}\n`;
+            });
+            message += `\nTotal: Rp ${total.toLocaleString('id-ID')}`;
+            return message;
+        }
+
+        // Custom alert modal functions
+        function showCustomAlert(title, message) {
+            document.getElementById('customAlertTitle').textContent = title;
+            document.getElementById('customAlertMessage').textContent = message;
+            document.getElementById('customAlertModal').style.display = 'flex';
+        }
+
+        document.getElementById('customAlertCloseButton').addEventListener('click', () => {
+            document.getElementById('customAlertModal').style.display = 'none';
+        });
+
+        // Event listener for name input
+        customerNameInput.addEventListener('input', updateCheckoutButtonState);
+
+        // Event listener for checkout button click
+        checkoutButton.addEventListener('click', () => {
+            const customerName = customerNameInput.value.trim();
+            if (customerName === '') {
+                showCustomAlert('Incomplete Order', 'Please enter your name before checking out.');
+                return;
+            }
+            if (cart.length === 0) {
+                showCustomAlert('Empty Cart', 'Please add some items to your cart before checking out.');
+                return;
+            }
+            
+            const message = encodeURIComponent(generateWhatsAppMessage());
+            window.location.href = `https://wa.me/${waNumber}?text=${message}`;
+        });
+
+        // Attach event listeners for the new carousel
+        const newCarouselContainer = document.getElementById('drinkCarouselContainer');
+        newCarouselContainer.addEventListener('mousedown', startDrag);
+        newCarouselContainer.addEventListener('touchstart', startDrag);
+        newCarouselContainer.addEventListener('mouseup', endDrag);
+        newCarouselContainer.addEventListener('touchend', endDrag);
+        newCarouselContainer.addEventListener('mouseleave', endDrag); // Handle case where mouse leaves container
+        newCarouselContainer.addEventListener('mousemove', drag);
+        newCarouselContainer.addEventListener('touchmove', drag);
+
+        // Update on window resize to keep the item centered
+        window.addEventListener('resize', centerNewCarousel);
+
+        // Initial update on page load
+        window.onload = function() {
+            // Check to make sure the initial index is valid, otherwise set to 0.
+            if (newCurrentIndex < 0 || newCurrentIndex >= coffeeItems.length) {
+                newCurrentIndex = 0;
+            }
+            renderCarouselItems(coffeeItems);
+            updateNewCarouselInfo(newCurrentIndex);
+            centerNewCarousel();
+            loadCartFromStorage();
+        };
+    </script>
+</body>
+</html>
