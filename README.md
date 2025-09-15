@@ -14,10 +14,12 @@ Copy the API key
 2. Configure the API Key
 Open config.js in your project
 Replace 'YOUR_API_KEY_HERE' with your actual API key:
+
 const CONFIG = {
     GEMINI_API_KEY: 'your-actual-api-key-here',
     // ... other config
 };
+
 3. Deploy to GitHub Pages
 Create a new repository on GitHub
 Upload all project files to the repository
